@@ -1,1 +1,16 @@
-show!
+<div class="container mt-3">
+  <h1><%= @restaurant.name %></h1>
+  <h3><%= @restaurant.address %></h3>
+  <h4><%= @restaurant.phone_number %></h4>
+  <h5><%= @restaurant.category %></h5>
+</div>
+<div class="container">
+  <h2>Reviews for <%= @restaurant.name %>:</h2>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content %> - <%= '*' * review.rating %></li>
+    <% end %>
+  </ul>
+  <%= link_to 'Add review', new_restaurant_review_path(@restaurant.id) %>
+  <%= link_to 'Back', restaurants_path %>
+</div>
